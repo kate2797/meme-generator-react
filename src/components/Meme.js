@@ -16,6 +16,17 @@ export default function Meme() {
       .then((res) => setAllMemes(res.data.memes)); // update state with a memes array
   }, []);
 
+  function handleChange(event) {
+    const { name, value } = event.target;
+    // update the state of topText and bottomText in our meme object
+    setMeme((prevMeme) => {
+      return {
+        ...prevMeme, // the old object
+        [name]: value,
+      };
+    });
+  }
+
   function getMemeImage() {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
@@ -31,8 +42,22 @@ export default function Meme() {
   return (
     <main>
       <div className='form'>
-        <input type='text' placeholder='Top text' className='form--input' />
-        <input type='text' placeholder='Bottom text' className='form--input' />
+        <input
+          type='text'
+          placeholder='Top text'
+          className='form--input'
+          name='topText'
+          value={meme.topText}
+          onChange={handleChange}
+        />
+        <input
+          type='text'
+          placeholder='Bottom text'
+          className='form--input'
+          name='bottomText'
+          value={meme.bottomText}
+          onChange={handleChange}
+        />
         <button className='form--button' onClick={getMemeImage}>
           Get a new meme image &nbsp;🖼
         </button>
