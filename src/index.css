@@ -33,11 +33,6 @@ main {
     margin-right: auto;
 }
 
-.header--project {
-    font-size: 0.75rem;
-    font-weight: 500;
-}
-
 .form {
     display: grid;
     grid-template: 40px 40px / 1fr 1fr;
@@ -50,6 +45,7 @@ main {
     border-radius: 5px;
     border: 1px solid #D5D4D8;
     text-indent: 5px;
+    font-size: 14px;
 }
 
 .form--button {
@@ -61,6 +57,7 @@ main {
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .meme {
@@ -113,4 +110,5 @@ main {
   padding: 0.75rem;
   display: flex;
   justify-content: center;
+  font-size: 14px;
 }
