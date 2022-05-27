@@ -1,13 +1,16 @@
 import React from "react";
 
 export default function Meme() {
-  const [meme, setMeme] = React.useState({
-    topText: "",
-    bottomText: "",
-    randomImage: "http://i.imgflip.com/1bij.jpg", // default state
-  });
-
+  const [meme, setMeme] = React.useState(generateDefaultMeme()); // default state
   const [allMemes, setAllMemes] = React.useState([]); // default state
+
+  function generateDefaultMeme() {
+    return {
+      topText: "",
+      bottomText: "",
+      randomImage: "http://i.imgflip.com/1bij.jpg", // default state
+    };
+  }
 
   // make API call, once, after the component has rendered for the first time
   React.useEffect(() => {
@@ -25,6 +28,10 @@ export default function Meme() {
         [name]: value,
       };
     });
+  }
+
+  function handleRestart() {
+    setMeme(generateDefaultMeme()); // cold reset
   }
 
   function getMemeImage() {
@@ -60,6 +67,9 @@ export default function Meme() {
         />
         <button className='form--button' onClick={getMemeImage}>
           Get a new meme image &nbsp;🖼
+        </button>
+        <button className='form--button' onClick={handleRestart}>
+          Restart &nbsp;🔄
         </button>
       </div>
       <div className='meme'>
